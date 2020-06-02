@@ -4,7 +4,8 @@ namespace Hcode;
 
 use Rain\Tpl;
 
-class Page {
+class Page
+{
 
 	private $tpl;
 	private $options = [];
@@ -12,12 +13,12 @@ class Page {
 		"data"=>[]
 	];
 
-	public function __construct($opts = array()){
+	public function __construct($opts = array(), $tpl_dir = "/views/"){
 
 		$this->options = array_merge($this->defaults, $opts); // O "array_merge" mescla os dados das duas arrays, mas se houver conflito os dados da array mais a direita se sobressai.
 
 		$config = array(
-			"tpl_dir"       => $_SERVER["DOCUMENT_ROOT"]."/views/",
+			"tpl_dir"       => $_SERVER["DOCUMENT_ROOT"].$tpl_dir, //Se for chamado na classe PageAdmin, sera a pasta de la, se não, sera a padrao.
 			"cache_dir"     => $_SERVER["DOCUMENT_ROOT"]."/views-cache/",
 			"debug"         => false
 	    );
